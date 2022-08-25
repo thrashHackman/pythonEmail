@@ -3,8 +3,9 @@ import ssl
 import smtplib
 
 e = 'There was an error sending the email!\nPlease try again.'
-email_sender = 'tahraun@gmail.com'
+email_sender = 'YOUR EMAIL'
 email_password = 'PASSWORD'
+# WHEN ADDING EMAIL PASSWORD, IF USING GMAIL, CREATE AN APP PASSWORD USING THIS TUTORIAL https://www.youtube.com/watch?v=Dg8L5t3kdAU&t=135s
 
 print('--------------- WELCOME TO THE EMAIL PORTAL ---------------\n')
 email_receive = str(input('Send to: '))
@@ -21,7 +22,7 @@ em.set_content(body)
 context = ssl.create_default_context()
 
 try: 
-    with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
+    with smtplib.SMTP_SSL('smtp.YOUR SERVER.com', 465, context=context) as smtp:
         smtp.login(email_sender, email_password)
         smtp.sendmail(email_sender, email_receive, em.as_string())
         print('Successful!\nEmail Sent to ', email_receive, '.')
