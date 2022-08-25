@@ -4,7 +4,7 @@ import smtplib
 
 e = 'There was an error sending the email!\nPlease try again.'
 email_sender = 'tahraun@gmail.com'
-email_password = 'efdrcasgkxznukio'
+email_password = 'PASSWORD'
 
 print('--------------- WELCOME TO THE EMAIL PORTAL ---------------\n')
 email_receive = str(input('Send to: '))
