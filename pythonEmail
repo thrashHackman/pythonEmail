@@ -2,14 +2,15 @@ from email.message import EmailMessage
 import ssl
 import smtplib
 
-email_sender = 'YOUR EMAIL'
-email_password = 'YOUR EMAIL PASSWORD'
-# WHEN ADDING EMAIL PASSWORD, MAKE SURE YOU UTILIZE 'APP PASSWORDS' FOR GOOGLE VIA THIS LINK: https://www.youtube.com/watch?v=Dg8L5t3kdAU
+e = 'There was an error sending the email!\nPlease try again.'
+email_sender = 'tahraun@gmail.com'
+email_password = 'efdrcasgkxznukio'
 
-email_receive = 'RECEIVER EMAIL ADDRESS
+print('--------------- WELCOME TO THE EMAIL PORTAL ---------------\n')
+email_receive = str(input('Send to: '))
 
-subject = 'Python Test'
-body = '''This email comes from python!'''
+subject = str(input('Subject: '))
+body = str(input('Body: '))
 
 em = EmailMessage()
 em['From'] = email_sender
@@ -19,7 +20,11 @@ em.set_content(body)
 
 context = ssl.create_default_context()
 
-with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
-    smtp.login(email_sender, email_password)
-    smtp.sendmail(email_sender, email_receive, em.as_string())
+try: 
+    with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
+        smtp.login(email_sender, email_password)
+        smtp.sendmail(email_sender, email_receive, em.as_string())
+        print('Successful!\nEmail Sent to ', email_receive, '.')
+except Exception as e:
+    print(e)
 
